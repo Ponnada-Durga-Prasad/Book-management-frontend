@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+// eslint-disable-next-line no-undef
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 
 const MyBooks = () => {
   const [myBooks, setMyBooks] = useState([]);
@@ -11,7 +13,7 @@ const MyBooks = () => {
   useEffect(() => {
     const fetchMyBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/mybooks", {
+        const res = await axios.get(`${BASE_URL}/api/mybooks`, {
           withCredentials: true,
         });
         setMyBooks(res.data.books);
@@ -29,7 +31,7 @@ const MyBooks = () => {
   const handleStatusChange = async (bookId, status) => {
     try {
       await axios.patch(
-        "http://localhost:5000/api/mybooks/status",
+        `${BASE_URL}/api/mybooks/status`,
         { bookId, status },
         { withCredentials: true }
       );
@@ -47,7 +49,7 @@ const MyBooks = () => {
   const handleRatingChange = async (bookId, rating) => {
     try {
       await axios.patch(
-        "http://localhost:5000/api/mybooks/rating",
+        `${BASE_URL}/api/mybooks/rating`,
         { bookId, rating },
         { withCredentials: true }
       );

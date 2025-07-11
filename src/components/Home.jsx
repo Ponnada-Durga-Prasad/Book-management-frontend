@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import BookCard from "./BookCard";
-
+// eslint-disable-next-line no-undef
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 const Home = () => {
   const dispatch = useDispatch();
   const book = useSelector((state) => state.book);
@@ -11,7 +12,7 @@ const Home = () => {
     async function fetchBooks() {
       try {
         dispatch({ type: "FETCHING_BOOKS" });
-        const res = await axios.get("http://localhost:5000/collection/books");
+        const res = await axios.get(`${BASE_URL}/collection/books`);
         dispatch({ type: "FETCHED_BOOKS", payload: res.data.books });
       } catch (error) {
         dispatch({

@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
+// eslint-disable-next-line no-undef
+const BASE_URL = process.env.REACT_APP_BACKEND_URL;
 const BookCard = ({ book }) => {
   const auth = useSelector((state) => state.auth);
 
@@ -13,7 +15,7 @@ const BookCard = ({ book }) => {
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/mybooks/${book._id}`,
+        `${BASE_URL}/api/mybooks/${book._id}`,
         { bookId: book._id },
         { withCredentials: true }
       );
@@ -52,3 +54,4 @@ const BookCard = ({ book }) => {
 };
 
 export default BookCard;
+5000;
