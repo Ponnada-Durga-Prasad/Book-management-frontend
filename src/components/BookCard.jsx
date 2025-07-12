@@ -2,8 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-// eslint-disable-next-line no-undef
-const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 const BookCard = ({ book }) => {
   const auth = useSelector((state) => state.auth);
 

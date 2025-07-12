@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import BookCard from "./BookCard";
-// eslint-disable-next-line no-undef
-const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Home = () => {
   const dispatch = useDispatch();
   const book = useSelector((state) => state.book);

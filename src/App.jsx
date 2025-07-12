@@ -13,8 +13,8 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Authentication/Login";
 import Home from "./components/Home";
 import MyBooks from "./components/MyBooks";
-// eslint-disable-next-line no-undef
-const BASE_URL = process.env.REACT_APP_BACKEND_URL;
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 function App() {
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
