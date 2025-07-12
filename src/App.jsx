@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Authentication/Login";
 import Home from "./components/Home";
 import MyBooks from "./components/MyBooks";
+import Register from "./components/Authentication/Register";
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
 function App() {
@@ -62,7 +63,7 @@ function App() {
           path="/login"
           element={auth.isAuth ? <Navigate to="/" /> : <Login />}
         />
-
+        <Route path="/register" element={<Register />} />
         <Route path="/" element={<Home />} />
 
         <Route

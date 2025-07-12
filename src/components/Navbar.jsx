@@ -7,19 +7,19 @@ const Navbar = () => {
 
   return (
     <div style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>
-      {/* Always visible to everyone */}
+      {/* Always visible */}
       <Link to="/" style={{ marginRight: "20px" }}>
         Books
       </Link>
 
-      {/* Only visible to logged-in users */}
+      {/* Only for logged-in users */}
       {auth.isAuth && (
         <Link to="/my-books" style={{ marginRight: "20px" }}>
           My Books
         </Link>
       )}
 
-      {/* Show email or login/logout */}
+      {/* Right side: email + logout (if logged in) OR login/register (if not) */}
       <span style={{ float: "right" }}>
         {auth.isAuth ? (
           <>
@@ -27,7 +27,12 @@ const Navbar = () => {
             <Link to="/logout">Logout</Link>
           </>
         ) : (
-          <Link to="/login">Login</Link>
+          <>
+            <Link to="/login" style={{ marginRight: "20px" }}>
+              Login
+            </Link>
+            <Link to="/register">Register</Link>
+          </>
         )}
       </span>
     </div>

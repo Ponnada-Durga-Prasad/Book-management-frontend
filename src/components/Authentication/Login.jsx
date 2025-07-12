@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom"; // ✅ Import Link to navigate
 const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,10 +17,7 @@ const Login = () => {
     try {
       const res = await axios.post(
         `${BASE_URL}/api/auth/login`,
-        {
-          email,
-          password,
-        },
+        { email, password },
         { withCredentials: true }
       );
 
@@ -55,6 +54,14 @@ const Login = () => {
         <button type="submit" style={styles.button} disabled={auth.loading}>
           {auth.loading ? "Logging in..." : "Login"}
         </button>
+
+        {/* ✅ Register Link */}
+        <p style={styles.registerText}>
+          Don’t have an account?{" "}
+          <Link to="/register" style={styles.registerLink}>
+            Register here
+          </Link>
+        </p>
       </form>
     </div>
   );
@@ -108,6 +115,17 @@ const styles = {
     color: "red",
     fontSize: "0.9rem",
     textAlign: "center",
+  },
+  registerText: {
+    textAlign: "center",
+    fontSize: "0.95rem",
+    marginTop: "1rem",
+    color: "#555",
+  },
+  registerLink: {
+    color: "#007bff",
+    textDecoration: "none",
+    fontWeight: "bold",
   },
 };
 
